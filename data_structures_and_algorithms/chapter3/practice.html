@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="list.js"></script>
+<script>
+    // practice 1
+    List.prototype.add_large = function (element) {
+        for ( i = 0; i < this.dataStore.length; i ++) {
+            if (element < this.dataStore[i]) {
+                return false;
+            }
+        }
+
+        this.append(element);
+    }
+
+    List.prototype.add_small = function (element) {
+        for ( i = 0; i < this.dataStore.length; i ++) {
+            if (element > this.dataStore[i]) {
+                return false;
+            }
+        }
+
+        this.append(element);
+    }
+
+    var list = new List();
+    list.append(1);
+    list.append(100);
+    list.append(50);
+    list.add_large(80);
+    list.add_large(120);
+    console.log(list.toString());
+
+    var list1 = new List();
+    list1.append('a');
+    list1.append('j');
+    list1.append('b');
+    list1.add_large('f');
+    list1.add_large('x');
+    console.log(list1.toString());
+</script>
+</body>
+</html>

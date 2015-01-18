@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript</title>
+</head>
+<body>
+
+<script>
+// practice 1
+	function Score()
+	{
+		this.dataStore = [];
+	}
+	Score.prototype = {
+
+		add : function(name, score) {
+			this.dataStore.push([name, score]);
+		},
+
+		average : function()
+		{
+			l = this.dataStore.length;
+			if (l <= 0) {
+				return 0;
+			}
+
+			var total = 0;
+			for (var i = 0; i < l ; i ++) {
+				total += this.dataStore[i][1];
+			}
+
+			return total / l;
+		}
+	};
+
+	var score = new Score();
+	score.add('Bob', 100);
+	score.add('Tom', 67);
+	score.add('Jack', 100);
+	score.add('Rose', 96);
+	console.log(score.average());
+
+	// practice 2
+	function NumberBox()
+	{
+		this.dataStore = ['hello', 'world', 'nice', 'to', 'meet', 'u'];
+	}
+
+	NumberBox.prototype = {
+
+		echo : function() {
+			for (i = 0, l = this.dataStore.length; i < l ; i ++) {
+				console.log(this.dataStore[i]);
+			}
+		},
+
+		echoReverse : function(){
+			var reverse = this.dataStore.reverse();
+			for (i = 0, l = reverse.length; i < l ; i ++) {
+				console.log(reverse[i]);
+			}
+		}
+
+	};
+
+	var nb = new NumberBox();
+//	nb.echo();
+	nb.echoReverse();
+
+// practice 3
+
+</script>
+</body>
+</html>

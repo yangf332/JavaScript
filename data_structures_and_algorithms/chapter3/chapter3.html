@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="list.js"></script>
+<script>
+    var names = new List();
+    names.append('Tom');
+    names.append('Bot');
+    names.append('Jack');
+    names.append('Rose');
+    names.append('White');
+    names.append('Lily');
+    console.log(names.toString());
+    names.front();
+    console.log(names.getElement());
+    names.front();
+    console.log(names.getElement());
+    names.next();
+    names.next();
+    console.log(names.getElement());
+    names.prev();
+    console.log(names.getElement());
+</script>
+</body>
+</html>
