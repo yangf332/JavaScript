@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="stack.js"></script>
+<script>
+    function face(n) {
+        var s = new Stack();
+        while (n > 1) {
+            s.push(n --);
+        }
+
+        var product = 1;
+        while (s.length() > 0) {
+            product *= s.pop();
+        }
+
+        return product;
+    }
+
+    console.log(face(5));
+</script>
+</body>
+</html>

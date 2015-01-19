@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="stack.js"></script>
+<script>
+    // 1.
+    function isMathParenthesis(str) {
+        var s = new Stack();
+
+        for (i = 0, l = str.length; i < l; i++) {
+            if (str[i] == '(') {
+                s.push(str[i]);
+            }
+            if (str[i] == ')' && s.length() > 0) {
+                s.pop();
+            }
+        }
+
+        return s.length() == 0;
+    }
+
+    var str = '2.3 + 23 / 12 + (3.14159×0.24';
+    var str = '2.3 + 23 / 12 + (3.14159×0.24)';
+    console.log(isMathParenthesis(str));
+
+    // 2.
+    
+</script>
+</body>
+</html>

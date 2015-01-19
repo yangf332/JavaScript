@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="stack.js"></script>
+<script>
+    function isPalindromw(word) {
+        var s = new Stack();
+        for (var i = 0, l = word.length; i < l; i++) {
+            s.push(word[i]);
+        }
+
+        var rword = '';
+        while (s.length() > 0) {
+            rword += s.pop();
+        }
+
+        return word === rword ? true : false;
+    }
+
+    var word = 'abcba';
+    var word = 'hello';
+    console.log(isPalindromw(word));
+</script>
+</body>
+</html>
