@@ -27,8 +27,52 @@
     var str = '2.3 + 23 / 12 + (3.14159×0.24)';
     console.log(isMathParenthesis(str));
 
-    // 2.
-    
+    // 2. 中缀表达式转后缀表达式
+    // 规则 ：从左到右遍历表达式每个数字和符号，遇到数字就输出；若是符号，则判断与栈顶的优先级，是右括号或优先级低于
+    //       栈顶符号（乘除优先于加减）,则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出为止。
+    function operation(str) {
+        var arr = str.split(' ');
+        var s = new Stack();
+        var mid_str = '';
+
+        for (var i = 0, l = arr.length; i < l; i ++) {
+            if (!isNaN(arr[i])) {
+                mid_str += arr[i] + ' ';
+            } else {
+                if (arr[i] == ')') {
+                    var pop_value = '';
+                    do {
+                        pop_value = s.pop();
+                        if (pop_value == '(') {
+                            break;
+                        } else {
+                            mid_str += pop_value + ' ';
+                        }
+                    } while (s.length() > 0)
+                } else if ((arr[i] == '+' || arr[i] == '-') && (s.peek() == '*' || s.peek() == '/')) {
+                    do {
+                        mid_str += s.pop() + ' ';
+                    } while (s.peek() == '+' || s.peek() == '-')
+                    s.push(arr[i]);
+                } else {
+                    s.push(arr[i]);
+                }
+                console.log(mid_str);
+            }
+        }
+
+        while (s.length() > 0) {
+            mid_str += s.pop() + ' ';
+        }
+
+        return mid_str;
+    }
+
+    var str = '9 + ( 3 - 1 ) * 3 + 10 / 2';
+    // '+ * + / '
+    var mid = operation(str);
+    console.log(mid);
+    // 9 3 1 - 3 * + 10 2 / +
 </script>
 </body>
 </html>
