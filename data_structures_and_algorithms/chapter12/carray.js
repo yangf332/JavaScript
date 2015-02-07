@@ -7,6 +7,7 @@ function CArray(numElements)
     for (var i = 0; i < numElements; i ++) {
         this.dataStore[i] = i;
     }
+    this.gaps = [5, 3, 1];
 }
 
 CArray.prototype = {
@@ -84,6 +85,26 @@ CArray.prototype = {
             }
             this.dataStore[inner] = temp;
             console.log(this.toString());
+        }
+    },
+
+    setGaps : function (arr) {
+        this.gaps = arr;
+    },
+
+    shellsSort : function () {
+        for (var g = 0; g < this.gaps.length; g ++) {
+            console.log(this.gaps[g] + '...');
+            for (var i = this.gaps[g]; i < this.dataStore.length; i ++) {
+                var temp = this.dataStore[i];
+                for (var j = i; j >= this.gaps[g] &&
+                        this.dataStore[j - this.gaps[g]] > temp;
+                        j -= this.gaps[g]) {
+                    this.dataStore[j] = this.dataStore[j - this.gaps[g]];
+                }
+                this.dataStore[j] = temp;
+                console.log(this.toString());
+            }
         }
     }
 
