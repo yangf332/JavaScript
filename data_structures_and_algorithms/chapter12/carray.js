@@ -106,6 +106,26 @@ CArray.prototype = {
                 console.log(this.toString());
             }
         }
+    },
+
+    // 快速排序
+    qSort : function (list) {
+        if (list.length == 0) {
+            return [];
+        }
+
+        var left = [];
+        var right = [];
+        var pivot = list[0];
+        for (var i = 1; i < list.length; i ++) {
+            if (list[i] < pivot) {
+                left.push(list[i]);
+            } else {
+                right.push(list[i]);
+            }
+        }
+
+        return this.qSort(left).concat(pivot, this.qSort(right));
     }
 
 }
